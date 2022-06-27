@@ -16,36 +16,38 @@
           <a class="mavbar-brand" href="/">
             <span>Bookers</span>
           </a>
-          <button class="navbar-toggler collapsed" type="button" data-target="#navbarNavDropdown" aria-controls="navbarNavdropdown" are-expanded="false" are-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+          
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <%if user_signed_in?%>  
               <li>
-          　　　<%=link_to "Home",users_path(:id)%>
+          　　　<%=link_to "Home",users_path(:id),class:"nav-link text-light"%>
         　　　　</li>
         　　　　<li>
-          　　<%=link_to "Users",users_path%>
+          　　<%=link_to "Users",users_path,class:"nav-link text-ligh"%>
         　　　　</li>
         　　　　<li>
-          　　<%=link_to  "Books",books_path%>
+          　　<%=link_to  "Books",books_path,class:"nav-link text-ligh"%>
         　　　　</li>
         　　　　<li>
-          　　<%=link_to "Log out",destroy_user_session_path,method: :delete%>
+          　　<%=link_to "Log out",destroy_user_session_path,class:"nav-link text-ligh",method: :delete%>
         　　　　</li>
       　　　　　　<%else%>
       　　　　　　　 <li>
-          　　<%=link_to "Home",root_path%>
+          　　<%=link_to "Home",root_path,class:"nav-link text-ligh"%>
       　　　　　　　 </li>
       　　　　　　　 <li>
-         　　　　<%=link_to "About",'/home/about'%>
+         　　　　<%=link_to "About",'/home/about',class:"nav-link text-light"%>
        　　　　　</li>
       　　　　　 <li>
-        　　　　 <%=link_to "Sign_up",new_user_registration_path%>
+        　　　　 <%=link_to "Sign_up",new_user_registration_path,class:"nav-link text-light"%>
        　　　</li>
        　　　<li>
-         　　<%=link_to "Log in",new_user_session_path%>
+         　　<%=link_to "Log in",new_user_session_path,class:"nav-link text-light"%>
        　　　</li>
       　　　　<%end%>
             </ul>
