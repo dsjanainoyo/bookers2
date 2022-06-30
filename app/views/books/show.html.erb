@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         
-        <%=render 'useinfo', book: @book%>
+        <%=render 'users/useinfo', book: @book, user:@user%>
         
         <div class="col-md-8 offset-md-1">
             <h2>Book detail</h2>
@@ -9,19 +9,22 @@
                 <tbody>
                     <tr>
                         <td>
-                            <%=link_to user_path(:id)%>
+                            <%=link_to user_path(@books) do%>
+                            <%=image_tag @books.user.get_profile_image(100,100) %><br/>
+                              <%=@books.user.name%>
+                            <%end%>
                         </td>
                         <td>
-                            <%=link_to book.title,books_path(:id)%>
+                            <%=link_to @books.title,book_path(@books)%>
                         </td>
                         <td>
-                            <%=book.body%>
+                            <%= @books.body%>
                         </td>
                         <td>
-                            <%link_to "Edit",edit_book_path(:id),class:"btn btn-sm btn-success"%>
+                            <%=link_to "Edit",edit_book_path(@books),class:"btn btn-sm btn-success"%>
                         </td>
                         <td>
-                            <%=link_to "Destroy",destroy_book_path(:id),method: :delete,"date-confirm"=>"本当に消しますか？"%>
+                            <%=link_to "Destroy",book_path(@books.id),method: :delete,"date-confirm"=>"本当に消しますか？",class:"btn btn-sm btn-danger"%>
                         </td>
                     </tr>
                 </tbody>
