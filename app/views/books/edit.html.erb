@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
             <h1>Editing Book</h1>
-            <%=form_with model: @book,url:edit_book_path(@book),method: :patch do |f|%>
+            <%=form_with model: @book,url:update_book_path(@book),method: :patch do |f|%>
             <div class="form-group">
                 <label for="book_title">Title</label>
                 <%=f.text_field:title,autofocus:true,id:"book_title",class:"form-control book_title"%>
@@ -18,7 +18,7 @@
             </div>
             <%end%>
             
-            <%=link_to "Show",books_path(@book)%>
+            <%=link_to "Show",book_path(@book)%>
             |
             <%=link_to "Back",books_path%>
         </div>

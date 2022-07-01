@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :carrent_user, only: [:edit,:update]
+  
   def  new 
     @users=User.new
   end
@@ -24,10 +26,18 @@ class UsersController < ApplicationController
   
   def update
     user=User.find(params[:id])
-    user.update(user_params)
-    redirect_to user_path(:id)
+    if user.update(user_params)
+    redirect_to user_path(:id),notice: 'You have updated user successfully'
+    else
+    render edit
+    end
   end   
   def user_params
     params.require(:user).permit(:name,:introduction,:profile_image)
+  end
+  
+  def carrent_user
+   
+    redirect_to(user_url(current_user)) unless params[:id]==current_user.id
   end
 end
