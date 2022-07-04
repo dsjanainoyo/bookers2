@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         
-        <%=render 'users/useinfo', book: @book, user:@user%>
+        <%=render 'users/useinfo', book: @book, user: @books.user,users: @user%>
         
         <div class="col-md-8 offset-md-1">
             <h2>Book detail</h2>
@@ -9,7 +9,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <%=link_to user_path(@books) do%>
+                            <%=link_to user_path(@books.user) do%>
                             <%=image_tag @books.user.get_profile_image(100,100) %><br/>
                               <%=@books.user.name%>
                             <%end%>

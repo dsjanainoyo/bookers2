@@ -7,15 +7,14 @@
 　　<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 　　<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/1d6b20a0d2.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class="mavbar-brand" href="/">
-            <span>Bookers</span>
-          </a>
+         <%=link_to "Bookers","/",class:"navbar-brand"%>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,33 +22,59 @@
           
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <%if user_signed_in?%>  
+            <%if user_signed_in?%>
               <li>
-          　　　<%=link_to "Home",users_path(:id),class:"nav-link text-light"%>
-        　　　　</li>
-        　　　　<li>
-          　　<%=link_to "Users",users_path,class:"nav-link text-ligh"%>
-        　　　　</li>
-        　　　　<li>
-          　　<%=link_to  "Books",books_path,class:"nav-link text-ligh"%>
-        　　　　</li>
-        　　　　<li>
-          　　<%=link_to "Log out",destroy_user_session_path,class:"nav-link text-ligh",method: :delete%>
-        　　　　</li>
-      　　　　　　<%else%>
-      　　　　　　　 <li>
-          　　<%=link_to "Home",root_path,class:"nav-link text-ligh"%>
-      　　　　　　　 </li>
-      　　　　　　　 <li>
-         　　　　<%=link_to "About",'/home/about',class:"nav-link text-light"%>
-       　　　　　</li>
-      　　　　　 <li>
-        　　　　 <%=link_to "Sign_up",new_user_registration_path,class:"nav-link text-light"%>
-       　　　</li>
-       　　　<li>
-         　　<%=link_to "Log in",new_user_session_path,class:"nav-link text-light"%>
-       　　　</li>
-      　　　　<%end%>
+                <%= link_to user_path(current_user),class:"nav-link text-light" do %>
+                <p><i class="fas fa-home"></i>Home</p>
+                <%end%>
+              </li>
+              
+              <li>
+                <%= link_to users_path,class:"nav-link text-light" do %>
+                <p><i class="fas fa-users"></i>Users</p>
+                <%end%>
+              </li>
+              
+              <li>
+                <%= link_to books_path,class:"nav-link text-light" do %>
+                <p><i class="fas fa-book-open"></i>Books</p>
+                <%end%>
+              </li>
+              
+              <li>
+                <%= link_to destroy_user_session_path,method: :delete,class:"nav-link text-light" do %>
+                <p><i class="fas fa-sign-out-alt"></i>Log out</p>
+                <%end%>
+              </li>
+              
+              <%else%>
+                
+              <li>
+                <%= link_to root_path,class:"nav-link text-light" do %>
+                <p><i class="fas fa-home"></i>Home</p>
+                <%end%>
+              </li>
+              
+              <li>
+                <%= link_to home_about_path,class:"nav-link text-light" do %>
+                <p><i class="fas fa-link"></i>About</p>
+                <%end%>
+              </li>
+              
+              <li>
+                <%= link_to new_user_registration_path,class:"nav-link text-light" do %>
+                <p><i class="fas fa-user-plus"></i>Sign up</p>
+                <%end%>
+              </li>
+              
+              <li>
+                <%= link_to new_user_session_path,class:"nav-link text-light" do %>
+                <p><i class="fas fa-sign-in-alt"></i>Log in</p>
+                <%end%>
+              </li>
+              
+              <%end%>
+
             </ul>
           </div>
         </div>
